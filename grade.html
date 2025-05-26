@@ -124,4 +124,12 @@
       res.innerText = valid ? `Result: ${(total / credits).toFixed(2)}` : 'Enter valid values';
       res.style.color = valid ? 'blue' : 'red';
     };
-
+const clearAll = () => {
+      document.getElementById('sgpaInputs').innerHTML = `<div class="input-group"><input type="number" placeholder="Grade" step="0.1"><input type="number" placeholder="Credits" step="0.5"></div>`;
+      document.getElementById('cgpaInputs').innerHTML = `<div class="input-group"><input type="number" placeholder="SGPA" step="0.01"><input type="number" placeholder="Credits" step="0.5"></div>`;
+      document.getElementById('sgpaResult').innerText = '';
+      document.getElementById('cgpaResult').innerText = '';
+    };
+  </script>
+</body>
+</html>
