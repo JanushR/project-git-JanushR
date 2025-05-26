@@ -56,3 +56,26 @@
     }
   </style>
 </head>
+<body>
+  <div class="container">
+    <div id="login">
+      <h2>Login</h2>
+      <button class="blue" onclick="toggleView(true)">Login to Calculator</button>
+    </div>
+
+    <div id="calculator" style="display:none;">
+      <h2>SGPA & CGPA Calculator</h2>
+      <button class="red" onclick="toggleView(false)">Logout</button>
+
+      <div class="section">
+        <h3>SGPA</h3>
+        <div id="sgpaInputs">
+          <div class="input-group">
+            <input type="number" placeholder="Grade" step="0.1">
+            <input type="number" placeholder="Credits" step="0.5">
+          </div>
+        </div>
+        <button class="green" onclick="addInput('sgpaInputs', 'Grade')">Add Course</button>
+        <button class="green" onclick="calculate('sgpaInputs', 'sgpaResult')">Calculate SGPA</button>
+        <div id="sgpaResult" class="result"></div>
+      </div>
