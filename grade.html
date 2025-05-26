@@ -79,3 +79,17 @@
         <button class="green" onclick="calculate('sgpaInputs', 'sgpaResult')">Calculate SGPA</button>
         <div id="sgpaResult" class="result"></div>
       </div>
+      <div class="section">
+        <h3>CGPA</h3>
+        <div id="cgpaInputs">
+          <div class="input-group">
+            <input type="number" placeholder="SGPA" step="0.01">
+            <input type="number" placeholder="Credits" step="0.5">
+          </div>
+        </div>
+        <button class="green" onclick="addInput('cgpaInputs', 'SGPA')">Add Semester</button>
+        <button class="green" onclick="calculate('cgpaInputs', 'cgpaResult')">Calculate CGPA</button>
+        <div id="cgpaResult" class="result"></div>
+      </div>
+    </div>
+  </div>
