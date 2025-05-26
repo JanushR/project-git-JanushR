@@ -93,3 +93,35 @@
       </div>
     </div>
   </div>
+  <script>
+    const toggleView = show => {
+      document.getElementById('login').style.display = show ? 'none' : 'block';
+      document.getElementById('calculator').style.display = show ? 'block' : 'none';
+      if (!show) clearAll();
+    };
+
+    const addInput = (id, label) => {
+      document.getElementById(id).insertAdjacentHTML('beforeend',
+        `<div class="input-group">
+          <input type="number" placeholder="${label}" step="0.1">
+          <input type="number" placeholder="Credits" step="0.5">
+        </div>`);
+    };
+
+    const calculate = (id, resultId) => {
+      const rows = document.querySelectorAll(`#${id} .input-group`);
+      let total = 0, credits = 0, valid = false;
+      rows.forEach(row => {
+        const val1 = parseFloat(row.children[0].value);
+        const val2 = parseFloat(row.children[1].value);
+        if (!isNaN(val1) && !isNaN(val2) && val1 >= 0 && val1 <= 10 && val2 > 0) {
+          total += val1 * val2;
+          credits += val2;
+          valid = true;
+        }
+      });
+      const res = document.getElementById(resultId);
+      res.innerText = valid ? `Result: ${(total / credits).toFixed(2)}` : 'Enter valid values';
+      res.style.color = valid ? 'blue' : 'red';
+    };
+
