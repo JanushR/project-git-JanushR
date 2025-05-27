@@ -108,22 +108,34 @@
         </div>`);
     };
 
-    const calculate = (id, resultId) => {
-      const rows = document.querySelectorAll(`#${id} .input-group`);
-      let total = 0, credits = 0, valid = false;
-      rows.forEach(row => {
-        const val1 = parseFloat(row.children[0].value);
-        const val2 = parseFloat(row.children[1].value);
-        if (!isNaN(val1) && !isNaN(val2) && val1 >= 0 && val1 <= 10 && val2 > 0) {
-          total += val1 * val2;
-          credits += val2;
-          valid = true;
-        }
-      });
-      const res = document.getElementById(resultId);
-      res.innerText = valid ? `Result: ${(total / credits).toFixed(2)}` : 'Enter valid values';
-      res.style.color = valid ? 'blue' : 'red';
-    };
+   const calculate = (id, resultId) => {
+  const rows = document.querySelectorAll(#${id} .input-group);
+  let total = 0, credits = 0, valid = false;
+
+  rows.forEach(row => {
+    const gradeInput = row.children[0];
+    const creditInput = row.children[1];
+    const val1 = parseFloat(gradeInput.value);
+    const val2 = parseFloat(creditInput.value);
+
+    // Reset styles
+    gradeInput.style.borderColor = '#ccc';
+    creditInput.style.borderColor = '#ccc';
+
+    if (!isNaN(val1) && !isNaN(val2) && val1 >= 0 && val1 <= 10 && val2 > 0) {
+      total += val1 * val2;
+      credits += val2;
+      valid = true;
+    } else {
+      gradeInput.style.borderColor = 'red';
+      creditInput.style.borderColor = 'red';
+    }
+  });
+
+  const res = document.getElementById(resultId);
+  res.innerText = valid ? Result: ${(total / credits).toFixed(2)} : 'Enter valid values';
+  res.style.color = valid ? 'blue' : 'red';
+};
 const clearAll = () => {
       document.getElementById('sgpaInputs').innerHTML = `<div class="input-group"><input type="number" placeholder="Grade" step="0.1"><input type="number" placeholder="Credits" step="0.5"></div>`;
       document.getElementById('cgpaInputs').innerHTML = `<div class="input-group"><input type="number" placeholder="SGPA" step="0.01"><input type="number" placeholder="Credits" step="0.5"></div>`;
