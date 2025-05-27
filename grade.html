@@ -137,11 +137,19 @@
   res.style.color = valid ? 'blue' : 'red';
 };
 const clearAll = () => {
-      document.getElementById('sgpaInputs').innerHTML = `<div class="input-group"><input type="number" placeholder="Grade" step="0.1"><input type="number" placeholder="Credits" step="0.5"></div>`;
-      document.getElementById('cgpaInputs').innerHTML = `<div class="input-group"><input type="number" placeholder="SGPA" step="0.01"><input type="number" placeholder="Credits" step="0.5"></div>`;
-      document.getElementById('sgpaResult').innerText = '';
-      document.getElementById('cgpaResult').innerText = '';
-    };
+  setDefault('sgpaInputs', 'Grade', 0.1);
+  setDefault('cgpaInputs', 'SGPA', 0.01);
+  document.getElementById('sgpaResult').innerText = '';
+  document.getElementById('cgpaResult').innerText = '';
+};
+
+const setDefault = (id, label, step) => {
+  document.getElementById(id).innerHTML = `
+    <div class="input-group">
+      <input type="number" placeholder="${label}" step="${step}">
+      <input type="number" placeholder="Credits" step="0.5">
+    </div>`;
+};
   </script>
 </body>
 </html>
