@@ -101,12 +101,14 @@
     };
 
     const addInput = (id, label) => {
-      document.getElementById(id).insertAdjacentHTML('beforeend',
-        `<div class="input-group">
-          <input type="number" placeholder="${label}" step="0.1">
-          <input type="number" placeholder="Credits" step="0.5">
-        </div>`);
-    };
+  const step = label === 'SGPA' ? 0.01 : 0.1;
+  const html = `
+    <div class="input-group">
+      <input type="number" placeholder="${label}" step="${step}">
+      <input type="number" placeholder="Credits" step="0.5">
+    </div>`;
+  document.getElementById(id).insertAdjacentHTML('beforeend', html);
+};
 
    const calculate = (id, resultId) => {
   const rows = document.querySelectorAll(#${id} .input-group);
